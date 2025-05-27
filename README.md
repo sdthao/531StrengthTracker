@@ -1,6 +1,6 @@
 # 531 Strength
 
-This app allows you to track strength training workouts (following the 5/3/1 paradigm), nutrition, and weight. To get started with the app, follow the steps below to set up your development environment and run the app on a physical device or emulator.
+This app allows you to track strength training workouts (following the 5/3/1 paradigm). To get started with the app, follow the steps below to set up your development environment and run the app on a physical device or emulator.
 
 ---
 
