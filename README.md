@@ -96,3 +96,29 @@ In your project directory, run the following command:
 ```bash
 npx expo start
 ```
+
+This will open a new tab in your browser with the Expo Dev Tools, providing options to open the app on different platforms. It will also print a QR code in your terminal.
+
+### 6.2 Run on a Physical Device (with Expo Go)
+
+- Ensure you have the **Expo Go app** installed on your Android or iOS physical device.
+- With the development server (`npx expo start`) running:
+  - **Android:** Scan the QR code displayed in your terminal or on the Expo Dev Tools page using your phone's camera.
+  - **iOS:** Use the built-in QR code scanner in the Camera app, or scan it from within the Expo Go app.
+- The app will automatically load in Expo Go.
+
+### 6.3 Run on an Android Emulator
+
+- Ensure an Android emulator is running (see Step 5).
+- With the development server (`npx expo start`) running, press `a` in your terminal. The app will build and open on the running emulator.
+
+### 6.4 Run on the Web
+
+- With the development server (`npx expo start`) running, press `w` in your terminal.
+- Alternatively, you can run the following command directly:
+
+  ```bash
+  npx expo start --web
+  ```
+
+- This will open your app in your default web browser (e.g., Chrome, Firefox).
