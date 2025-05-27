@@ -4,6 +4,10 @@ This app allows you to track strength training workouts (following the 5/3/1 par
 
 ---
 
+![Screenshot of homepage](assets/home-screenshot.png)
+
+---
+
 ## Prerequisites
 
 Before running the app, ensure you have the following tools installed:
