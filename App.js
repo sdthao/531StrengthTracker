@@ -31,8 +31,7 @@ export default function App() {
     catch (error)
     {
       console.error('Failed to load lifts:', error);
-      // Optionally show an alert to the user
-      // Alert.alert('Error', 'Failed to load lifts. Please try again.');
+      Alert.alert('Error', 'Failed to load lifts. Please try again.');
     }
     finally
     {

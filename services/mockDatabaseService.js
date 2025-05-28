@@ -5,7 +5,6 @@ import { Lift, TrackingLift } from '../models/liftModels'; // Needed for creatin
 let mockLiftsData = []; // This will be our in-memory "database"
 let nextMockId = 1;      // To simulate auto-incrementing IDs
 
-// Optional: Add some initial mock data for easier testing
 const addInitialMockData = () => {
     if (mockLiftsData.length === 0) {
         const date = new Date().toLocaleDateString();
