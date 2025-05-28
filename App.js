@@ -1,5 +1,3 @@
-console.log("App.js bundle is loading!");
-
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Switch, useColorScheme, ActivityIndicator, SafeAreaView, Alert } from 'react-native';
 import AddLiftButton from './components/AddLiftButton';
@@ -23,8 +21,6 @@ export default function App() {
   const loadLifts = async () => {
     try {
       setIsLoading(true);
-      // fetchLifts from dbService already returns TrackingLift objects,
-      // so no need for manual mapping here.
       const fetchedTrackingLifts = await fetchLifts();
       setLifts(fetchedTrackingLifts);
     }
@@ -64,15 +60,30 @@ export default function App() {
    * useEffect hook to initialize the database and load lifts when the component mounts.
    */
   useEffect(() => {
-    initDb()
-      .then(() => {
+    const initializeApp = async () => {
+      try {
+        await initDb();
         console.log("Database initialized successfully, now loading lifts...");
-        return loadLifts();
-      })
-      .catch(error => {
-        console.error("Failed to initialize app or load lifts:", error);
-        Alert.alert("Failed to initialize app or load lifts:", error);
-      });
+      } catch (initError) {
+        console.error("Failed to initialize database:", initError);
+        Alert.alert("Initialization Failed", `Failed to set up the app: ${initError.message}. Please restart the app.`);
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        setIsLoading(true);
+        await loadLifts();
+        console.log("Lifts loaded successfully!");
+      } catch (loadError) {
+        console.error("Error during initial lifts loading:", loadError);
+        Alert.alert("Lifts Loading Failed", loadError.message);
+      } finally {
+        setIsLoading(false); 
+      }
+    };
+
+    initializeApp();
   }, []);
 
   if (isLoading) {
