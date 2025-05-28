@@ -1,19 +1,20 @@
 // src/services/dbServices.js
 
 // --- Configuration for switching between services ---
-const USE_MOCK_SERVICE = true; // Set to false to use Expo SQLite
+const USE_MOCK_SERVICE = false; // Set to false to use Expo SQLite
 // ---------------------------------------------------
 
 // --- Configuration for switching between services ---
-// const isWeb = Platform.OS === 'web';
+import { Platform } from 'react-native';
+const isWeb = Platform.OS === 'web';
 // ---------------------------------------------------
 
 // Note: expo-sqlite's .openDatabase() is not supported on web.
 // The web platform typically relies on deprecated Web SQL or IndexedDB,
 // which behave differently and are not fully compatible with native SQLite.
 // Therefore, the mock service is used for web to ensure functionality.
-// if (isWeb)
-//   USE_MOCK_SERVICE = true;
+if (isWeb)
+  USE_MOCK_SERVICE = true;
 
 import { Lift, TrackingLift } from '../models/liftModels';
 
