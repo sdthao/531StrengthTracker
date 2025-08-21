@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Switch, useColorScheme, ActivityIndicator, SafeAreaView, Alert } from 'react-native';
 import AddLiftButton from './components/AddLiftButton';
+import DeleteLiftButton from './components/DeleteLiftButton';
 import CalculateWeights from './components/CalculateWeights';
 import { fetchLifts, initDb } from './services/dbService';
 import { lightColors, darkColors } from './constants/colors';
@@ -112,11 +113,18 @@ export default function App() {
       </View>
 
       {/*
-       * Component for adding new lifts.
-       * @param {function} onLiftAdded - Callback function to refresh lifts after adding.
-       * @param {object} colors - Theme colors for styling.
+       * Row of buttons for managing lifts.
+       * - <AddLiftButton>: Triggers addition of a new lift.
+       *     @param {function} onLiftAdded - Callback to refresh lifts after adding.
+       *     @param {object} colors - Theme colors for styling.
+       * - <DeleteLiftButton>: Triggers deletion of a lift.
+       *     @param {function} onLiftDeleted - Callback to refresh lifts after deleting.
+       *     @param {object} colors - Theme colors for styling.
        */}
-      <AddLiftButton onLiftAdded={handleLiftsUpdated} colors={colors} />
+      <View style={styles.buttonsRow}>
+        <AddLiftButton onLiftAdded={handleLiftsUpdated} colors={colors} />
+        <DeleteLiftButton onLiftDeleted={handleLiftsUpdated} colors={colors} />
+      </View>
 
       {/*
        * Component for displaying the list of lifts and their calculated weights.
@@ -180,5 +188,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginHorizontal: 5,
+  },
+  buttonsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
